@@ -11,60 +11,56 @@ const Usuario = require('../models/usuario');
     });
   }
 
-//  const usuariosPut = async(req, res = response) => {
-//     const {id} = req.params;
-//     const {password,google,correo, ...resto} = req.body;
+  const usuariosPut = async(req, res = response) => {
+    const {id} = req.params;
+    const {_id,password,google,correo, ...resto} = req.body;
     
-//     //TODO:validar contra base de datos
+    //TODO:validar contra base de datos
 
-//     if (password) {
-//       const salt = bcryptjs.genSaltSync();
-//       resto.password = bcryptjs.hashSync(password, salt);
-//     }
+    if (password) {
+      const salt = bcryptjs.genSaltSync();
+      resto.password = bcryptjs.hashSync(password, salt);
+    }
 
-//     const usuario = await Usuario.findByIdAndUpdate(id,resto);
+    const usuario = await Usuario.findByIdAndUpdate(id,resto);
 
-//     res.json({
-//         msg: 'put API-usuarioPut',
-//         id
-//     })
+    res.json(usuario);
 
-//  }
+ }
 
+// const usuariosPut = async (req, res = response) => {
+//   const { id } = req.params;
+//   const { password, ...resto } = req.body;
 
-const usuariosPut = async (req, res = response) => {
-  const { id } = req.params;
-  const { password, ...resto } = req.body;
+//   try {
+//       const usuario = await Usuario.findById(id);
 
-  try {
-      const usuario = await Usuario.findById(id);
+//       if (!usuario) {
+//           return res.status(404).json({
+//               ok: false,
+//               msg: 'Usuario no encontrado'
+//           });
+//       }
 
-      if (!usuario) {
-          return res.status(404).json({
-              ok: false,
-              msg: 'Usuario no encontrado'
-          });
-      }
+//       if (password) {
+//           const salt = bcryptjs.genSaltSync();
+//           resto.password = bcryptjs.hashSync(password, salt);
+//       }
 
-      if (password) {
-          const salt = bcryptjs.genSaltSync();
-          resto.password = bcryptjs.hashSync(password, salt);
-      }
+//       const usuarioActualizado = await Usuario.findByIdAndUpdate(id, resto, { new: true });
 
-      const usuarioActualizado = await Usuario.findByIdAndUpdate(id, resto, { new: true });
-
-      res.json({
-          ok: true,
-          usuario: usuarioActualizado
-      });
-  } catch (error) {
-      console.error(error);
-      res.status(500).json({
-          ok: false,
-          msg: 'Error al actualizar usuario'
-      });
-  }
-}
+//       res.json({
+//           ok: true,
+//           usuario: usuarioActualizado
+//       });
+//   } catch (error) {
+//       console.error(error);
+//       res.status(500).json({
+//           ok: false,
+//           msg: 'Error al actualizar usuario'
+//       });
+//   }
+// }
 
 
 
