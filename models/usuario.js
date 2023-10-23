@@ -34,7 +34,8 @@ const UsuarioSchema = Schema({
 
 // desestruccturacion para quitar el la version y el password del modelo de usuario al hacer la peticion post
 UsuarioSchema.methods.toJSON = function() {
-     const {__v,password,...usuario  } = this.toObject();
+     const {__v,password,_id,...usuario  } = this.toObject();
+     usuario.uid = _id;
      return usuario;
 }
 
