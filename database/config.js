@@ -7,8 +7,8 @@ const dbConnection = async() =>{
             useNewUrlParser: true,
             useUnifiedTopology:true,
           
-           //    useCreateIndex:true,
-           //  useFindAndModify:false
+            // useCreateIndex:true,
+            // useFindAndModify:false
     });
      console.log('Bases de datos online');
             
@@ -18,7 +18,6 @@ const dbConnection = async() =>{
     }
     
    }
-
 
 module.exports = {
     dbConnection
