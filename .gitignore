@@ -9,3 +9,5 @@ node_modules/
 # Otros patrones de ignorar
 ...
 
+uploads/productos/**.*
+uploads/usuarios/**.*
